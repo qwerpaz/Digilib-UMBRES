@@ -1,0 +1,25 @@
+<div id="editProfileModal" class="modal" style="display:none;">
+    <div class="modal-content" style="max-width:480px;">
+        <div class="modal-header">
+            <h3>Edit Profil</h3>
+            <button class="modal-close" onclick="closeEditProfileModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="editProfileName">Nama Lengkap</label>
+                <input type="text" id="editProfileName" class="form-input" placeholder="Nama lengkap">
+            </div>
+            <div class="form-group" style="margin-top:12px;">
+                <label for="editProfileRole">Role</label>
+                <select id="editProfileRole" class="form-input">
+                    <option value="user">Pengguna Biasa</option>
+                    <option value="admin">Administrator</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeEditProfileModal()">Batal</button>
+            <button class="btn btn-primary" onclick="saveProfileChanges()">Simpan</button>
+        </div>
+    </div>
+</div>
