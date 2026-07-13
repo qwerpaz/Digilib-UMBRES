@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrator - DIGILIB UMBRES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tenor Sans', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #072A4A 0%, #072A4A 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, #0c2842 0%, #0f3460 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .login-header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .login-header i {
+            font-size: 30px;
+        }
+        
+        .login-header p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .login-form {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #072A4A;
+            box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
+        }
+        
+        .password-toggle {
+            position: relative;
+        }
+        
+        .password-toggle-icon {
+            position: absolute;
+            right: 15px;
+            top: 38px;
+            cursor: pointer;
+            color: #666;
+            user-select: none;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+        
+        .remember-forgot a {
+            color: #0f3460;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .remember-forgot a:hover {
+            color: #16213e;
+            text-decoration: underline;
+        }
+        
+        .remember-forgot input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(15, 52, 96, 0.3);
+        }
+        
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        
+        .login-btn i {
+            font-size: 16px;
+        }
+        
+        .login-footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .login-footer a {
+            color: #0f3460;
+            text-decoration: none;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .alert {
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .alert.show {
+            display: block;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-box {
+                border-radius: 0;
+            }
+            .login-header {
+                padding: 30px 20px;
+            }
+            .login-header h1 {
+                font-size: 20px;
+            }
+            .login-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>
+                    <i class="fas fa-lock"></i> ADMIN LOGIN
+                </h1>
+                <p>DIGILIB UMBRES - Panel Administrator</p>
+            </div>
+
+            <div class="login-form">
+                <div id="alertBox" class="alert"></div>
+
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label for="adminEmail">Email Administrator</label>
+                        <input type="email" id="adminEmail" name="email" placeholder="admin@umbres.ac.id" required autocomplete="email">
+                    </div>
+
+                    <div class="form-group password-toggle">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" name="password" placeholder="Masukkan Password" required autocomplete="current-password">
+                        <i class="fas fa-eye password-toggle-icon" onclick="togglePassword()"></i>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label>
+                            <input type="checkbox" name="remember" id="rememberMe">
+                            Ingat saya
+                        </label>
+                        <a href="#" onclick="return false;">Lupa Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="loginBtn">
+                        <span id="loginBtnText">Masuk ke Admin Panel</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="login-footer">
+                Jika tidak memiliki akses, hubungi administrator sistem
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password toggle function
+        function togglePassword() {
+            const passwordInput = document.getElementById('adminPassword');
+            const toggleIcon = document.querySelector('.password-toggle-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Show alert
+        function showAlert(message, type = 'danger') {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.className = `alert alert-${type} show`;
+            alertBox.innerHTML = `<i class="fas fa-${type === 'danger' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertBox.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        // Handle admin login
+        function handleAdminLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('adminEmail').value.trim();
+            const password = document.getElementById('adminPassword').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const loginBtnText = document.getElementById('loginBtnText');
+            const remember = document.getElementById('rememberMe').checked;
+
+            // Disable button and show loading
+            loginBtn.disabled = true;
+            loginBtnText.innerHTML = '<span class="loading"></span> Memproses...';
+
+            // Simulate API call
+            setTimeout(() => {
+                // Multiple valid admin credentials
+                const validCredentials = [{
+                    email: 'admin@umbres.ac.id',
+                    password: 'admin123456'
+                }, {
+                    email: 'admin@umbress.ac.id',
+                    password: 'admin123456'
+                }, {
+                    email: 'admin',
+                    password: 'admin123456'
+                }];
+
+                const isValidLogin = validCredentials.some(cred =>
+                    email.toLowerCase() === cred.email.toLowerCase() && password === cred.password
+                );
+
+                if (isValidLogin) {
+                    // Save login session
+                    const loginData = {
+                        email: email,
+                        loginTime: new Date().toISOString(),
+                        role: 'admin'
+                    };
+
+                    localStorage.setItem('adminSession', JSON.stringify(loginData));
+
+                    if (remember) {
+                        localStorage.setItem('adminEmail', email);
+                    }
+
+                    showAlert('Login berhasil! Mengalihkan ke Dashboard...', 'success');
+
+                    setTimeout(() => {
+                        window.location.href = 'admin-dashboard.html';
+                    }, 1500);
+                } else {
+                    showAlert('Email atau Password tidak sesuai!', 'danger');
+                    loginBtn.disabled = false;
+                    loginBtnText.textContent = 'Masuk ke Admin Panel';
+                }
+            }, 1500);
+        }
+
+        // Load saved email if remember was checked
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedEmail = localStorage.getItem('adminEmail');
+            if (savedEmail) {
+                document.getElementById('adminEmail').value = savedEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+
+            // Check if already logged in
+            const adminSession = localStorage.getItem('adminSession');
+            if (adminSession) {
+                window.location.href = 'admin-dashboard.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

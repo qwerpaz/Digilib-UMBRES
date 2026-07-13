@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGILIB UMBRES - Perpustakaan Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="auth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="https://umbs.ac.id/" class="a-content" data-page="logo">
+                    <img width="110px" height="80px" src="Logo.svg">
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <img width="10%" height="10%" src="Dashboard.svg">
+                    <span>Dashboard</span>
+                </a>
+                <a href="#koleksi" class="nav-item" data-page="koleksi">
+                    <img width="10%" height="10%" src="Buku.svg">
+                    <span>Koleksi Buku</span>
+                </a>
+                <a href="#transaksi" class="nav-item" data-page="transaksi">
+                    <img width="10%" height="10%" src="transaksi.svg">
+                    <span>Transaksi Pinjam</span>
+                </a>
+                <a href="#denda" class="nav-item" data-page="denda">
+                    <img width="10%" height="10%" src="denda.svg">
+                    <span>Denda</span>
+                </a>
+                <a href="#laporan" class="nav-item" data-page="laporan">
+                    <img width="10%" height="10%" src="laporan.svg">
+                    <span>Laporan</span>
+                </a>
+                <a href="#lainnya" class="nav-item" data-page="lainnya">
+                    <img width="10%" height="10%" src="lainnya.svg">
+                    <span>Lainnya</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="SEARCH BOOK HERE">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-profile">
+                    <span class="user-tag" id="headerUserName">-</span>
+                    <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer;"></i>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <div class="welcome-section">
+                    </div>
+
+                    <div class="hero-image">
+                        <img width="100" height="100" src="selamat.svg">
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <img width="50%" height="50%" src="Buku.svg">
+                            </div>
+                            <div class="stat-info">
+                                <h3>6</h3>
+                                <p>Total Buku</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <img width="50%" height="50%" src="anggota.svg">
+                            </div>
+                            <div class="stat-info">
+                                <h3>1</h3>
+                                <p>Anggota Aktif</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <img width="40%" height="40%" src="transaksi.svg">
+                            </div>
+                            <div class="stat-info">
+                                <h3>4</h3>
+                                <p>Pinjaman Hari Ini</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <img width="50%" height="50%" src="denda.svg">
+                            </div>
+                            <div class="stat-info">
+                                <h3>4</h3>
+                                <p>Denda Tertunda</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="copyright">
+                        <span width="5px" height="5px"> © </span>
+                        <span> 2026 </span>
+                        <span> DIGILIB UMBRES </span>
+                        <span> All Rights Reserved. </span>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                <!-- Koleksi Buku Page -->
+                <div id="koleksi-page" class="page">
+                    <div class="koleksi-header">
+                        <h2>Koleksi Buku Perpustakaan</h2>
+                        <p class="koleksi-subtitle">Temukan ribuan koleksi buku berkualitas di perpustakaan kami</p>
+                        <div class="koleksi-filter">
+                            <input type="text" id="search-buku" class="search-input-buku" placeholder="🔍 Cari judul buku atau penulis...">
+                            <select id="filter-genre" class="filter-select-buku">
+                                <option value="">Semua Genre</option>
+                                <option value="Roman">Roman</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Fiksi">Fiksi</option>
+                                <option value="Non-Fiksi">Non-Fiksi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="koleksi-grid">
+                        <!-- Buku 1 -->
+                        <div class="book-card" data-genre="Roman">
+                            <div class="book-cover">
+                                <img src="laskar pelangi.png" alt="Laskar Pelangi">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 5</div>
+                                <div class="book-rating">⭐ 4.8</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Laskar Pelangi</h3>
+                                <p class="book-author">Andrea Hirata</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Roman</span>
+                                    <span class="meta-year">2005</span>
+                                </div>
+                                <p class="book-desc">Cerita tentang perjuangan siswa di sebuah sekolah terpencil.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+
+                        <!-- Buku 2 -->
+                        <div class="book-card" data-genre="Drama">
+                            <div class="book-cover">
+                                <img src="bumi manusia.jpg" alt="Bumi Manusia">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 3</div>
+                                <div class="book-rating">⭐ 4.9</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Bumi Manusia</h3>
+                                <p class="book-author">Pramoedya Ananta Toer</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Drama</span>
+                                    <span class="meta-year">1980</span>
+                                </div>
+                                <p class="book-desc">Novel maestro sastra Indonesia yang menggugah hati dan pikiran.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+
+                        <!-- Buku 3 -->
+                        <div class="book-card" data-genre="Fiksi">
+                            <div class="book-cover">
+                                <img src="julam carjer.jpg" alt="Julam Carjer">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 2</div>
+                                <div class="book-rating">⭐ 4.5</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Julam Carjer</h3>
+                                <p class="book-author">Nyong</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Fiksi</span>
+                                    <span class="meta-year">2040</span>
+                                </div>
+                                <p class="book-desc">Karya lokal yang unik dengan cerita yang menarik dan penuh makna.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+
+                        <!-- Buku 4 -->
+                        <div class="book-card" data-genre="Roman">
+                            <div class="book-cover">
+                                <img src="anak semua bangsa.jpg" alt="Anak Semua Bangsa">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 4</div>
+                                <div class="book-rating">⭐ 4.7</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Anak Semua Bangsa</h3>
+                                <p class="book-author">Pramoedya Ananta Toer</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Roman</span>
+                                    <span class="meta-year">1980</span>
+                                </div>
+                                <p class="book-desc">Kelanjutan cerita Bumi Manusia dengan alur yang lebih kompleks.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+
+                        <!-- Buku 5 -->
+                        <div class="book-card" data-genre="Non-Fiksi">
+                            <div class="book-cover">
+                                <img src="negri 5 menara.webp" alt="Negeri 5 Menara">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 6</div>
+                                <div class="book-rating">⭐ 4.6</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Negeri 5 Menara</h3>
+                                <p class="book-author">Ahmad Fuadi</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Non-Fiksi</span>
+                                    <span class="meta-year">2009</span>
+                                </div>
+                                <p class="book-desc">Inspirasi dari kehidupan di pesantren dan petualangan global.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+
+                        <!-- Buku 6 -->
+                        <div class="book-card" data-genre="Fiksi">
+                            <div class="book-cover">
+                                <img src="houghton_typ_520.03.736_-_margarita_philosophica.jpg" alt="Margarita Philosophica">
+                                <div class="book-overlay">
+                                    <button class="btn-detail-book">Detail</button>
+                                    <button class="btn-pinjam-book">Pinjam</button>
+                                </div>
+                                <div class="book-stok">Stok: 1</div>
+                                <div class="book-rating">⭐ 4.3</div>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Margarita Philosophica</h3>
+                                <p class="book-author">Gregor Reisch</p>
+                                <div class="book-meta">
+                                    <span class="meta-genre">Fiksi</span>
+                                    <span class="meta-year">1503</span>
+                                </div>
+                                <p class="book-desc">Klasik literasi Eropa yang menggabungkan berbagai disiplin ilmu.</p>
+                                <div class="book-status available">Tersedia</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="koleksi-footer">
+                        <p>📚 Total Buku: <strong>6</strong> | 🆓 Tersedia: <strong>6</strong> | 🔒 Dipinjam: <strong>4</strong></p>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- Modal Detail Buku -->
+                <div id="bookDetailModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Detail Buku</h3>
+                            <button class="modal-close" onclick="closeBookDetailModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Judul:</strong> <span id="detailTitle"></span></p>
+                            <p><strong>Penulis:</strong> <span id="detailAuthor"></span></p>
+                            <p><strong>Genre:</strong> <span id="detailGenre"></span></p>
+                            <p><strong>Tahun Terbit:</strong> <span id="detailYear"></span></p>
+                            <p><strong>Deskripsi:</strong> <span id="detailDesc"></span></p>
+                            <p><strong>Stok:</strong> <span id="detailStock"></span></p>
+                            <p><strong>Status:</strong> <span id="detailStatus"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" onclick="closeBookDetailModal()">Tutup</button>
+                            <button class="btn btn-primary" id="detailPinjamButton">Pinjam</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaksi Pinjam Page -->
+                <div id="transaksi-page" class="page">
+                    <h2>Transaksi Pinjam</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Peminjam</th>
+                                    <th>Judul Buku</th>
+                                    <th>Tgl Pinjam</th>
+                                    <th>Tgl Kembali</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ahmad Rizki</td>
+                                    <td>Julam Carjer</td>
+                                    <td>01-04-2026</td>
+                                    <td>08-04-2026</td>
+                                    <td><span class="badge badge-success">Aktif</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Siti Nurhaliza</td>
+                                    <td>Laskar Pelangi</td>
+                                    <td>30-03-2026</td>
+                                    <td>06-04-2026</td>
+                                    <td><span class="badge badge-danger">Telambat</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>3</td>
+                                    <td>Dedisantoso</td>
+                                    <td>Aanak Semua Bangsa</td>
+                                    <td>1-03-2026</td>
+                                    <td>19-04-2026</td>
+                                    <td><span class="badge badge-danger">Terlambat</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>4</td>
+                                    <td>putriyansih</td>
+                                    <td>Negri 5 Menara</td>
+                                    <td>11-04-2026</td>
+                                    <td>08-04-2026</td>
+                                    <td><span class="badge badge-danger">Terlambat</span></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Denda Page -->
+                <div id="denda-page" class="page">
+                    <h2>Denda</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Peminjam</th>
+                                    <th>Judul Buku</th>
+                                    <th>Hari Terlambat</th>
+                                    <th>Nominal</th>
+                                    <th>Status</th>
+                                    <th>Aksi Pembayaran</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Siti Nurhaliza</td>
+                                    <td>Laskar Pelangi</td>
+                                    <td>3 hari</td>
+                                    <td>Rp 15.000</td>
+                                    <td><span class="badge badge-danger">Belum Lunas</span></td>
+                                    <td><button class="btn btn-small btn-primary" onclick="openPaymentModal(1, 'Siti Nurhaliza', 15000, this)">Bayar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Ahmad Rizki</td>
+                                    <td>Anak Semua Bangsa</td>
+                                    <td>5 hari</td>
+                                    <td>Rp 25.000</td>
+                                    <td><span class="badge badge-danger">Belum Lunas</span></td>
+                                    <td><button class="btn btn-small btn-primary" onclick="openPaymentModal(2, 'Ahmad Rizki', 25000, this)">Bayar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Dedi Santoso</td>
+                                    <td>Anak Semua Bangsa</td>
+                                    <td>3 hari</td>
+                                    <td>Rp 15.000</td>
+                                    <td><span class="badge badge-danger">Belum Lunas</span></td>
+                                    <td><button class="btn btn-small btn-primary" onclick="openPaymentModal(2, 'Ahmad Rizki', 25000, this)">Bayar</button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>4</td>
+                                    <td>putriyansih</td>
+                                    <td>Negri 5 Menara</td>
+                                    <td>5 hari</td>
+                                    <td>Rp 25.000</td>
+                                    <td><span class="badge badge-danger">Belum Lunas</span></td>
+                                    <td><button class="btn btn-small btn-primary" onclick="openPaymentModal(2, 'Ahmad Rizki', 25000, this)">Bayar</button></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Laporan Page -->
+                <div id="laporan-page" class="page">
+                    <h2>Laporan</h2>
+                    
+                    <!-- Filter Laporan -->
+                    <div class="laporan-filter">
+                        <select id="jenis-laporan" onchange="gantiLaporan()">
+                            <option value="harian">Laporan Harian</option>
+                            <option value="bulanan">Laporan Bulanan</option>
+                            <option value="tahunan">Laporan Tahunan</option>
+                        </select>
+                        <input type="date" id="tanggal-laporan">
+                        <button class="btn btn-primary" onclick="cetakLaporan()">Cetak Laporan</button>
+                    </div>
+
+                    <!-- Laporan Harian -->
+                    <div id="laporan-harian" class="laporan-content">
+                        <h3>Laporan Harian - <span id="tgl-harian">25 April 2026</span></h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jenis Aktivitas</th>
+                                        <th>Jumlah</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Buku Dipinjam</td>
+                                        <td>2</td>
+                                        <td>Julam Carjer, Laskar Pelangi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Buku Dikembalikan</td>
+                                        <td>1</td>
+                                        <td>Bumi Manusia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Anggota Baru</td>
+                                        <td>2</td>
+                                        <td>putriannsih,Budi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Denda Terbayar</td>
+                                        <td>Rp 25.000
+                                
+                                        </td>
+                                        <td>Lunas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Laporan Bulanan -->
+                    <div id="laporan-bulanan" class="laporan-content" style="display:none;">
+                        <h3>Laporan Bulanan - April 2026</h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jenis Aktivitas</th>
+                                        <th>Jumlah</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Total Buku Dipinjam</td>
+                                        <td>15</td>
+                                        <td>Sepanjang bulan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Total Buku Dikembalikan</td>
+                                        <td>12</td>
+                                        <td>Sepanjang bulan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Anggota Baru</td>
+                                        <td>3</td>
+                                        <td>Pendaftaran baru</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Total Denda</td>
+                                        <td>Rp 45.000</td>
+                                        <td>Keterlambatan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Laporan Tahunan -->
+                    <div id="laporan-tahunan" class="laporan-content" style="display:none;">
+                        <h3>Laporan Tahunan - 2026</h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jenis Aktivitas</th>
+                                        <th>Jumlah</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Total Buku Dipinjam</td>
+                                        <td>180</td>
+                                        <td>Sepanjang tahun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Total Buku Dikembalikan</td>
+                                        <td>165</td>
+                                        <td>Sepanjang tahun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Anggota Baru</td>
+                                        <td>25</td>
+                                        <td>Pendaftaran baru</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Total Denda</td>
+                                        <td>Rp 540.000</td>
+                                        <td>Keterlambatan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lainnya Page -->
+                <div id="lainnya-page" class="page">
+                    <h2>Pengaturan & Lainnya</h2>
+                    <div class="settings-container">
+                        <div class="setting-item" style="display: flex; align-items: center; gap: 20px;">
+                            <div style="flex: 1;">
+                                <h3>Profil Saya</h3>
+                                <div style="margin-top: 10px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #3498db;">
+                                    <p style="margin: 5px 0; color: #666;">Nama Pengguna:</p>
+                                    <p style="margin: 5px 0; font-weight: bold; font-size: 16px;" id="profileUserName">-</p>
+                                    <p style="margin: 5px 0; color: #666; font-size: 12px;">Role: <span id="profileUserRole">-</span></p>
+                                    <div style="margin-top:10px;">
+                                        <button class="btn btn-primary" onclick="openEditProfileModal()">Edit Profil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <h3>Ganti Password</h3>
+                            <p>Ubah password akun user Anda dengan aman</p>
+                            <button class="btn btn-secondary" onclick="openChangePasswordModal()">Ubah Password</button>
+                        </div>
+                        <div class="setting-item">
+                            <h3>Bantuan</h3>
+                            <p>Hubungi administrator</p>
+                            <button class="btn btn-secondary" onclick="requestHelp()">Buka Bantuan</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width:480px;">
+            <div class="modal-header">
+                <h3>Edit Profil</h3>
+                <button class="modal-close" onclick="closeEditProfileModal()">& times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editProfileName">Nama Lengkap</label>
+                    <input type="text" id="editProfileName" class="form-input" placeholder="Nama lengkap">
+                </div>
+                <div class="form-group" style="margin-top:12px;">
+                    <label for="editProfileRole">Role</label>
+                    <select id="editProfileRole" class="form-input">
+                        <option value="user">Pengguna Biasa</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditProfileModal()">Batal</button>
+                <button class="btn btn-primary" onclick="saveProfileChanges()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pembayaran -->
+    <div id="paymentModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pilih Metode Pembayaran</h3>
+                <button class="modal-close" onclick="closePaymentModal()">& times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="paymentInfo" style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
+                    <p><strong>Nama:</strong> <span id="paymentName">-</span></p>
+                    <p><strong>Nominal Denda:</strong> Rp <span id="paymentAmount">0</span></p>
+                </div>
+
+                <div class="payment-methods">
+                    <!-- Bank Payments -->
+                    <div class="payment-section">
+                        <h4 style="margin-bottom: 15px;">💳 Transfer Bank</h4>
+                        <div class="payment-option" onclick="selectPaymentMethod('bri', 1234567890)">
+                            <div class="payment-icon">
+                                <img src="BRI.svg" alt="BRI" style="width: 40px; height: 40px;">
+                            </div>
+                            <div class="payment-details">
+                                <h5>BRI (Bank Rakyat Indonesia)</h5>
+                                <p>Rekening: 1234567890</p>
+                                <p>Atas Nama: PERPUSTAKAAN UMBRES</p>
+                            </div>
+                            <div class="payment-select" id="bri-select"></div>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPaymentMethod('bca', 9876543210)">
+                            <div class="payment-icon">
+                                <img src="BCA.svg" alt="BCA" style="width: 40px; height: 40px;">
+                            </div>
+                            <div class="payment-details">
+                                <h5>BCA (Bank Central Asia)</h5>
+                                <p>Rekening: 9876543210</p>
+                                <p>Atas Nama: PERPUSTAKAAN UMBRES</p>
+                            </div>
+                            <div class="payment-select" id="bca-select"></div>
+                        </div>
+                    </div>
+
+                    <!-- E-Wallet Payments -->
+                    <div class="payment-section" style="margin-top: 20px;">
+                        <h4 style="margin-bottom: 15px;">📱 E-Wallet</h4>
+                        <div class="payment-option" onclick="selectPaymentMethod('dana', '081234567890')">
+                            <div class="payment-icon">
+                                <img src="Logo DANA -  (Koleksilogo.com).svg" alt="Dana" style="width: 45px; height: 40px;">
+                            </div>
+                            <div class="payment-details">
+                                <h5>Dana</h5>
+                                <p>Nomor: 081234567890</p>
+                                <p>Atas Nama: PERPUSTAKAAN UMBRES</p>
+                            </div>
+                            <div class="payment-select" id="dana-select"></div>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPaymentMethod('ovo', '089876543210')">
+                            <div class="payment-icon">
+                                <img src="logo ovo.webp" alt="OVO" style="width: 32px; height: 32px;">
+                            </div>
+                            <div class="payment-details">
+                                <h5>OVO</h5>
+                                <p>Nomor: 089876543210</p>
+                                <p>Atas Nama: PERPUSTAKAAN UMBRES</p>
+                            </div>
+                            <div class="payment-select" id="ovo-select"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closePaymentModal()">Batal</button>
+                <button class="btn btn-primary" id="paymentSubmitBtn" onclick="processPayment()" style="opacity: 0.5; cursor: not-allowed;" disabled>Lanjutkan Pembayaran</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Pembayaran -->
+    <div id="confirmationModal" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3>Konfirmasi Pembayaran</h3>
+                <button class="modal-close" onclick="closeConfirmationModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">
+                        <img src="checklist.svg" alt="Dana" style="width: 100px; height: 100px;">
+                    </div>
+                    <h3 style="font-size: 35px; margin-bottom: 15px; color: #27ae60;">Pembayaran Berhasil!</h3>
+                    <p style="margin: 30px 0; font-size: 20px;">
+                        Denda sebesar <strong>Rp <span id="confirmAmount">0</span></strong> telah terbayar<strong><span id="confirmMethod">-</span></strong>
+                    </p>
+                    <p style="color: #7f8c8d; font-size: 14px;">Terima kasih telah membayar denda tepat waktu!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="completePayment()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ganti Password -->
+    <div id="passwordModal" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width: 420px;">
+            <div class="modal-header">
+                <h3>Ganti Password</h3>
+                <button class="modal-close" onclick="closeChangePasswordModal()">& times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
+                    <p>Masukkan password lama dan password baru Anda untuk mengganti password akun.</p>
+                </div>
+                <div class="form-group">
+                    <label for="oldPassword">Password Lama</label>
+                    <input type="password" id="oldPassword" class="form-input" placeholder="Password lama">
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="newPassword">Password Baru</label>
+                    <input type="password" id="newPassword" class="form-input" placeholder="Password baru">
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="confirmPassword">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="Konfirmasi password baru">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeChangePasswordModal()">Batal</button>
+                <button class="btn btn-primary" onclick="submitChangePassword()">Simpan Password</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

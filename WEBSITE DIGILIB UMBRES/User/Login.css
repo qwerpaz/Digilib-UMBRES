@@ -1,0 +1,249 @@
+/* ============================================================================
+   GLOBAL STYLES
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Tenor sans', sans-serif;
+    background: linear-gradient(135deg, #001f3f 0%, #004080 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ============================================================================
+   LOGIN CONTAINER
+   ============================================================================ */
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    min-height: 550px;
+    background-color: #001f3f;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+/* ============================================================================
+   LOGIN LEFT - LOGO SECTION
+   ============================================================================ */
+.login-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+    padding: 40px;
+    min-height: 550px;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-wrapper img {
+    width: 80%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* ============================================================================
+   LOGIN RIGHT - FORM SECTION
+   ============================================================================ */
+.login-right {
+    flex: 1;
+    background-color: white;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 550px;
+}
+
+.login-right h2 {
+    color: #001f3f;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================================
+   FORM STYLING
+   ============================================================================ */
+form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.label-masukan {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: left;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 12px 0;
+    border: 2px solid #001f3f;
+    border-radius: 25px;
+    outline: none;
+    font-size: 15px;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    border-color: #004080;
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0, 31, 63, 0.1);
+}
+
+input::placeholder {
+    color: #999;
+}
+
+/* ============================================================================
+   BUTTON STYLING
+   ============================================================================ */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    background-color: #001f3f;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 31, 63, 0.2);
+}
+
+button:hover {
+    background-color: #003d7a;
+    box-shadow: 0 6px 16px rgba(0, 31, 63, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 31, 63, 0.2);
+}
+
+/* ============================================================================
+   ERROR & SUCCESS MESSAGE
+   ============================================================================ */
+#loginError, #loginSuccess {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#loginError {
+    background-color: #ffebee;
+    border: 1px solid #ef5350;
+    color: #d32f2f;
+}
+
+#loginSuccess {
+    background-color: #e8f5e9;
+    border: 1px solid #66bb6a;
+    color: #388e3c;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .login-left {
+        min-height: 300px;
+        padding: 30px;
+    }
+    
+    .login-right {
+        min-height: auto;
+        padding: 40px 30px;
+    }
+    
+    .login-right h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    form {
+        max-width: 100%;
+    }
+    
+    input, button {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .login-container {
+        border-radius: 10px;
+    }
+    
+    .login-left {
+        min-height: 250px;
+        padding: 20px;
+    }
+    
+    .login-right {
+        padding: 30px 20px;
+    }
+    
+    .login-right h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .label-masukan {
+        font-size: 12px;
+    }
+    
+    input {
+        padding: 11px 15px;
+        font-size: 13px;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
