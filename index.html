@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DIGILIB UMBRES</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-left">
+            <div class="logo-wrapper">
+                <img width="50%" height="50%" src="Logo.svg" alt="Logo DIGILIB UMBRES">
+            </div>
+        </div>
+
+        <div class="login-right">
+            <h2>SILAHKAN LOGIN <br> DIGILIB UMBRES</h2>
+            
+            <form id="loginForm">
+                <p class="label-masukan">Masukan</p>
+                
+                <input type="text" id="nim" name="nim" placeholder="NIM" required>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                
+                <button type="submit">Masuk</button>
+            </form>
+            
+            <div id="loginError" style="color:#d32f2f; display:none; margin-top:10px; text-align:center; font-size:14px;">
+                NIM, Username, atau Password salah!
+            </div>
+            
+            <div id="loginSuccess" style="color:#388e3c; display:none; margin-top:10px; text-align:center; font-size:14px;">
+                Login berhasil! Mengarahkan...
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const defaultUsers = [
+        { nim: '2021001', username: 'mahasiswa1', password: 'password123', nama: 'Andi Pratama', role: 'user' },
+        { nim: '2021002', username: 'mahasiswa2', password: 'password123', nama: 'Budi Santoso', role: 'user' },
+        { nim: '2021003', username: 'mahasiswa3', password: 'password456', nama: 'putriansih', role: 'user' }
+    ];
+
+    function getStoredUsers() {
+        const stored = localStorage.getItem('libraryUsers');
+        if (!stored) {
+            localStorage.setItem('libraryUsers', JSON.stringify(defaultUsers));
+            return defaultUsers;
+        }
+
+        try {
+            return JSON.parse(stored) || [];
+        } catch (error) {
+            console.warn('Invalid users storage, resetting to defaults:', error);
+            localStorage.setItem('libraryUsers', JSON.stringify(defaultUsers));
+            return defaultUsers;
+        }
+    }
+
+    function saveStoredUsers(users) {
+        localStorage.setItem('libraryUsers', JSON.stringify(users));
+    }
+
+    // ============================================================
+    // EVENT LISTENER FORM SUBMIT
+    // ============================================================
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nim = document.getElementById('nim').value.trim();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        
+        document.getElementById('loginError').style.display = 'none';
+        document.getElementById('loginSuccess').style.display = 'none';
+        
+        if (!nim || !username || !password) {
+            showError('Semua field harus diisi!');
+            return;
+        }
+
+        const users = getStoredUsers();
+        const matchedUser = users.find(user =>
+            user.nim === nim &&
+            user.username.toLowerCase() === username.toLowerCase() &&
+            user.password === password
+        );
+
+        if (!matchedUser) {
+            showError('NIM, Username, atau Password salah!');
+            document.getElementById('password').value = '';
+            return;
+        }
+
+        const user = {
+            id: matchedUser.nim,
+            nim: matchedUser.nim,
+            username: matchedUser.username,
+            nama: matchedUser.nama,
+            role: matchedUser.role
+        };
+
+        localStorage.setItem('loginUser', JSON.stringify(user));
+        localStorage.setItem('loginTimestamp', Date.now());
+        localStorage.setItem('isLoggedIn', 'true');
+
+        showSuccess('Login berhasil! Selamat datang, ' + user.nama);
+        document.getElementById('loginForm').style.opacity = '0.5';
+        document.getElementById('loginForm').style.pointerEvents = 'none';
+
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 1200);
+    });
+
+    // ============================================================
+    // Helper Functions
+    // ============================================================
+    function showError(message) {
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('loginError').textContent = message;
+        document.getElementById('loginSuccess').style.display = 'none';
+    }
+
+    function showSuccess(message) {
+        document.getElementById('loginSuccess').style.display = 'block';
+        document.getElementById('loginSuccess').textContent = message;
+        document.getElementById('loginError').style.display = 'none';
+    }
+
+    // ============================================================
+    // CLEAR FORM ERROR SAAT USER MENGETIK ULANG
+    // ============================================================
+    ['nim', 'username', 'password'].forEach(id => {
+        document.getElementById(id).addEventListener('focus', function() {
+            document.getElementById('loginError').style.display = 'none';
+        });
+    });
+
+    // ============================================================
+    // CEK JIKA SUDAH LOGIN, REDIRECT KE DASHBOARD
+    // ============================================================
+    window.addEventListener('load', function() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'index.html';
+        }
+    });
+    </script>
+</body>
+
+</html>
